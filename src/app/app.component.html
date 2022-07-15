@@ -1,10 +1,14 @@
 <p>
     <mat-toolbar color="primary">
-        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>time</mat-icon>
-    </button>
+        <button mat-icon-button class="example-icon" routerLink="/home" routerLinkActive mat-flat-button aria-label="Example icon-button with menu icon">
+       <img src="https://cdn-icons-png.flaticon.com/512/3652/3652191.png" style="width:90%;"/>
+         </button>
         <span>Zeiterfassungssystem</span>
-
         <span class="example-spacer"></span>
+        <button class="marging" routerLink="/dashboard" routerLinkActive mat-flat-button>
+          Dashboard
+        </button>
     </mat-toolbar>
 </p>
+
+<router-outlet></router-outlet>
