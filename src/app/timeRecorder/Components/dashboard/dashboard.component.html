@@ -1,1 +1,21 @@
-<p>dashboard works!</p>
+<table *ngIf="data$ | async as items else loading" style="background-color: rgb(236, 236, 236);">
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of items">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.status }}</td>
+        </tr>
+    </tbody>
+</table>
+<ng-template #loading>
+    <div class="flex flex-row-reverse justify-center" style="height: 100%; width: 100%; margin-top: 20px;">
+        <mat-spinner color="warn"></mat-spinner>
+    </div>
+</ng-template>
