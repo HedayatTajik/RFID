@@ -13,11 +13,14 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireModule } from '@angular/fire/compat';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { AboutComponent } from './timeRecorder/Components/about/about.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    DashboardComponent
+    DashboardComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    PdfViewerModule 
 
   ],
   providers: [],
