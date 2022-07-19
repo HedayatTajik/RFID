@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
 
     var timestamp = Date.now()
     var timestamp2 = Date.now() - 120000
-    console.log("timestamp:", timestamp);
+    console.log("timestamp1:", timestamp);
 
 
     const date = new Date(timestamp);
