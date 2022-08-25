@@ -9,20 +9,45 @@ import { GetDataService } from '../../Services/get-data.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  data$ !: Observable<any[]>;
+  UserData$ !: Observable<any[]>;
+  UserDataTime$ !: Observable<any[]>;
+
+  UserDataArray : any[] = []
+  UserDataTimeArray : any[] = []
+
+  loading1  = false
+
   constructor(
     private serviceGetData: GetDataService,
   ) { }
 
   ngOnInit(): void {
-    this.getDataFunc()
+   this.getAllUserData()
   }
 
-  getDataFunc() {
-    this.data$ = this.serviceGetData.getData()
-    this.data$.subscribe(res => {
-      console.log(res)
-    })
+  getAllUserData() {
+    this.UserData$ = this.serviceGetData.getUserData()
+    this.UserData$.subscribe(res => 
+      {
+        this.UserDataArray = [...res]
+        this.serviceGetData.getUserTime().subscribe(res =>
+        { 
+          this.UserDataTimeArray = [...res]
+
+          this.UserDataArray.forEach(user => {
+            var TimesArray: any[] = []
+            TimesArray.push(this.UserDataTimeArray.filter(item =>  user.ID == item.uuid_User))
+            user["times"] = TimesArray
+            this.loading1  = true
+          })
+
+          console.warn(this.UserDataArray);
+        })
+      }) 
   }
+
+
+
+
 
 }

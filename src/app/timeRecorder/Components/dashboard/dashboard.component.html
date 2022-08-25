@@ -1,20 +1,24 @@
-<table *ngIf="data$ | async as items else loading" style="background-color: rgb(236, 236, 236);">
+<table *ngIf="UserData$ | async as items else loading" style="background-color: rgb(236, 236, 236);">
     <thead>
         <tr>
+            <th>Tag</th>
             <th>Name</th>
-            <th>status</th>
+            <th>Last Name</th>
             <th>gekommen</th>
             <th>gegangen</th>
-            <th>gearbeitet</th>
+            
         </tr>
     </thead>
-    <tbody>
-        <tr *ngFor="let item of items">
-            <td>{{item.name}}</td>
-            <td>{{item.status}}</td>
-            <td>{{item.gekommen }}</td>
-            <td>{{item.gegangen }}</td>
-            <td>{{item.gearbeitet }}</td>
+
+    <tbody *ngIf="loading1"  > 
+        <tr *ngFor="let item of UserDataArray">
+
+            <td>{{item.times[0][0].time*1000 | date : 'd/M/yy' }}</td>
+            <td>{{item.FirstName}}</td>
+            <td>{{item.LastName}}</td>
+            <td>{{item.times[0][0].time *1000 |  date :"shortTime" }}</td>
+            <td>{{item.times[0][1].time *1000  | date :"shortTime"}}</td>
+
         </tr>
     </tbody>
 </table>
