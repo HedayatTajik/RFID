@@ -27,9 +27,11 @@ export class DashboardComponent implements OnInit {
 
   getAllUserData() {
     this.UserData$ = this.serviceGetData.getUserData()
+
     this.UserData$.subscribe(res => 
       {
         this.UserDataArray = [...res]
+        
         this.serviceGetData.getUserTime().subscribe(res =>
         { 
           this.UserDataTimeArray = [...res]

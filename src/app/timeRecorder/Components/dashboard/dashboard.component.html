@@ -9,15 +9,19 @@
             
         </tr>
     </thead>
-
     <tbody *ngIf="loading1"  > 
         <tr *ngFor="let item of UserDataArray">
+            <td *ngIf="item.times[0][0]">{{item.times[0][0]?.time*1000 | date : 'd/M/yy' }}</td>
+            <td *ngIf="!item.times[0][0]" >nd</td>
 
-            <td>{{item.times[0][0].time*1000 | date : 'd/M/yy' }}</td>
-            <td>{{item.FirstName}}</td>
-            <td>{{item.LastName}}</td>
-            <td>{{item.times[0][0].time *1000 |  date :"shortTime" }}</td>
-            <td>{{item.times[0][1].time *1000  | date :"shortTime"}}</td>
+            <td >{{item.FirstName}}</td>
+            <td >{{item.LastName}}</td>
+
+            <td *ngIf="item.times[0][0]" >{{item.times[0][0].time *1000 |  date :"mediumTime" }}</td>
+            <td *ngIf="!item.times[0][0]" >nd</td>
+
+            <td *ngIf="item.times[0][1]" >{{item.times[0][1].time *1000  | date :"mediumTime"}}</td>
+            <td *ngIf="!item.times[0][1]" >nd</td>
 
         </tr>
     </tbody>
