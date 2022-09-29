@@ -15,6 +15,13 @@ import { AngularFireModule } from '@angular/fire/compat';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { AboutComponent } from './timeRecorder/Components/about/about.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { registerLocaleData } from '@angular/common';
+import localeDe from '@angular/common/locales/de';
+import {LOCALE_ID} from '@angular/core';
+ 
+registerLocaleData(localeDe);
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +43,7 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
     PdfViewerModule 
 
   ],
-  providers: [],
+  providers: [{provide: LOCALE_ID, useValue: 'de'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
